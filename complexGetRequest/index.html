@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>National Park Searcher</title>
+</head>
+
+<body>
+  <h1>National Park Searcher</h1>
+  <main class="container">
+    <form>
+      <fieldset>
+        <p>Enter the state in which you are planning to visit a national park</p>
+        <input type="text" class="stateInput" placeholder="Enter a state">
+        <p>Number of Parks to list</p>
+        <input type="text" class="numberInput" placeholder="default 10 results">
+      </fieldset>
+      <button type="submit" class="searchButton">Search</button>
+    </form>
+
+    <section class="js-Results"></section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
