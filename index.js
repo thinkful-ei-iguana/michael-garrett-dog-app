@@ -1,19 +1,35 @@
 'use strict';
 
-//take input for number of pictures to fetch
+function getRandomImages(number) {
+  fetch(`https://dog.ceo/api/breeds/image/random/${number}`)
+    .then(response => response.json())
+    .then(jsonData => displayImage(jsonData));
+}
 
-const submitInput = function(){
-  ('form').on('submit', event =>{
-    event.preventDefault();
-    const userInput = ('#numberOfDogs').val();
-    input = userInput;
+function handleImagesRequest() {
+  $('.js-numberEntrySubmit').on('click keypress', e => {
+    e.preventDefault();
+    $('.js-dogGallery').html('');
+    const number = $('.numberOfDogs').val();
+    console.log(`number of images: ${number}`);
+    if (number > 50 || number < 1) {
+      alert('Enter a number between 1 and 50');
+    } else {
+      getRandomImages(number);
+    }
   });
-};
+}
 
-//need to fetch form the api.
-fetch('https://dog.ceo/api/breeds/image/random/3')
-  .then(response => response.json())
-  .then(jsonData => console.log(jsonData));
+function displayImage(data) {
+  data.message.forEach(link => {
+    console.log(link);
+    $('.js-dogGallery').append(`<img src='${link}' alt='dog'></img>`);
+  });
+}
+
+function main() {
+  handleImagesRequest();
+}
 
 //display response to console
-// $('main').html()
+$(main);
